@@ -10,3 +10,13 @@ server:
   limiter: false
   image_proxy: false
   public_instance: false
+
+engines:
+  - name: duckduckgo images
+    disabled: true
+  - name: deviantart
+    disabled: true
+  - name: pexels
+    disabled: true
+  - name: unsplash
+    disabled: true
