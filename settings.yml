@@ -1,8 +1,11 @@
+use_default_settings: true
+
 search:
   formats:
     - html
     - json
     - csv
+
 server:
   limiter: false
   image_proxy: false
