@@ -1,0 +1,9 @@
+search:
+  formats:
+    - html
+    - json
+    - csv
+server:
+  limiter: false
+  image_proxy: false
+  public_instance: false
