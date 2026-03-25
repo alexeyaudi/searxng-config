@@ -10,7 +10,6 @@ server:
   limiter: false
   image_proxy: false
   public_instance: false
-  secret_key: "${SEARXNG_SECRET}"
 
 engines:
   # --- ОТКЛЮЧАЕМ слабые/нерелевантные ---
@@ -19,7 +18,7 @@ engines:
   - name: deviantart
     disabled: true
   - name: pexels
-    disabled: true
+    disabled: false
   - name: unsplash
     disabled: true
   - name: wikicommons.images
@@ -30,34 +29,23 @@ engines:
   # --- ОСНОВНЫЕ: предметные фото товаров ---
   - name: google images
     disabled: false
-    tokens:
-      - "${SEARXNG_ENGINE_TOKEN}"
-
+    
   - name: bing images
     disabled: false
-    tokens:
-      - "${SEARXNG_ENGINE_TOKEN}"
-
+    
   - name: brave.images
     disabled: false
-    tokens:
-      - "${SEARXNG_ENGINE_TOKEN}"
-
+    
   # --- ТЕМАТИЧЕСКИЕ: референсы, эстетика, идеи ---
   - name: pinterest
     engine: pinterest
     categories: images
     disabled: false
-    tokens:
-      - "${SEARXNG_ENGINE_TOKEN}"
-
+    
   - name: flickr
     disabled: false     # lifestyle фото, хорошо для услуг
-    tokens:
-      - "${SEARXNG_ENGINE_TOKEN}"
-
+  
   # --- ДОПОЛНИТЕЛЬНЫЕ по потребности ---
   - name: qwant images
     disabled: false     # EU движок, хорош для европейских брендов
-    tokens:
-      - "${SEARXNG_ENGINE_TOKEN}"
+ 
