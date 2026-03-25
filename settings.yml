@@ -27,9 +27,12 @@ engines:
   - name: pinterest
     disabled: false
     categories: images
+    tokens: ['${SEARXNG_ENGINE_TOKEN}']
 
   - name: google images
     disabled: false
+    tokens: ['${SEARXNG_ENGINE_TOKEN}']
 
   - name: bing images
     disabled: false
+    tokens: ['${SEARXNG_ENGINE_TOKEN}']
