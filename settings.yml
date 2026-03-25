@@ -10,10 +10,10 @@ server:
   limiter: false
   image_proxy: false
   public_instance: false
-  secret_key: "${SEARXNG_SECRET_KEY}"  # ← из переменных Railway
+  secret_key: "${SEARXNG_SECRET}"
 
 engines:
-  # Отключённые
+  # --- ОТКЛЮЧАЕМ слабые/нерелевантные ---
   - name: duckduckgo images
     disabled: true
   - name: deviantart
@@ -22,18 +22,42 @@ engines:
     disabled: true
   - name: unsplash
     disabled: true
+  - name: wikicommons.images
+    disabled: true    # иконки/схемы, не товарные фото
+  - name: openverse
+    disabled: true    # только открытые лицензии, мусор для товаров
 
-  # Включаем явно
+  # --- ОСНОВНЫЕ: предметные фото товаров ---
+  - name: google images
+    disabled: false
+    tokens:
+      - "${SEARXNG_ENGINE_TOKEN}"
+
+  - name: bing images
+    disabled: false
+    tokens:
+      - "${SEARXNG_ENGINE_TOKEN}"
+
+  - name: brave.images
+    disabled: false
+    tokens:
+      - "${SEARXNG_ENGINE_TOKEN}"
+
+  # --- ТЕМАТИЧЕСКИЕ: референсы, эстетика, идеи ---
   - name: pinterest
     engine: pinterest
     categories: images
     disabled: false
-    tokens: ['${SEARXNG_ENGINE_TOKEN}']
+    tokens:
+      - "${SEARXNG_ENGINE_TOKEN}"
 
-  - name: google images
-    disabled: false
-    tokens: ['${SEARXNG_ENGINE_TOKEN}']
+  - name: flickr
+    disabled: false     # lifestyle фото, хорошо для услуг
+    tokens:
+      - "${SEARXNG_ENGINE_TOKEN}"
 
-  - name: bing images
-    disabled: false
-    tokens: ['${SEARXNG_ENGINE_TOKEN}']
+  # --- ДОПОЛНИТЕЛЬНЫЕ по потребности ---
+  - name: qwant images
+    disabled: false     # EU движок, хорош для европейских брендов
+    tokens:
+      - "${SEARXNG_ENGINE_TOKEN}"
