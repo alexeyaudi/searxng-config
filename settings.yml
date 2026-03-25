@@ -10,8 +10,10 @@ server:
   limiter: false
   image_proxy: false
   public_instance: false
+  secret_key: "${SEARXNG_SECRET_KEY}"  # ← из переменных Railway
 
 engines:
+  # Отключённые
   - name: duckduckgo images
     disabled: true
   - name: deviantart
@@ -20,3 +22,14 @@ engines:
     disabled: true
   - name: unsplash
     disabled: true
+
+  # Включаем явно
+  - name: pinterest
+    disabled: false
+    categories: images
+
+  - name: google images
+    disabled: false
+
+  - name: bing images
+    disabled: false
